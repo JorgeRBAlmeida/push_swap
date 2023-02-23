@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/23 01:01:54 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/23 01:56:16 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "libft.h"
 
 #endif
