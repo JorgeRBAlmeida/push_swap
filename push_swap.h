@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 11:17:16 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:29:02 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,17 @@
 # include "libft/libft.h"
 
 typedef struct s_content {
-	int				index;
-	int				data;
-}			t_content;
+	int	index;
+	int	data;
+}		t_content;
 
-int	is_arg_number(char *str);
-int	validate_args(char **argv);
+int		is_arg_number(char *str);
+int		validate_args(char **argv);
 t_list	*ft_node_new_content(t_content content);
-void	print_lst(t_list **node);
+void	print_lst(t_list *node);
 void	create_stack_a(t_list **node, char **argv);
+char	*ft_strjoin_special(char **s1, char *s2);
+char	**remove_space_argv(char **argv);
+void	free_new_argv(char **new_argv);
 
 #endif

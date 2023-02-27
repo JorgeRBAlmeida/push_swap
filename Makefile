@@ -1,6 +1,6 @@
 NAME		= push_swap
 
-SRCS		= push_swap.c list.c
+SRCS		= push_swap.c list.c utils.c
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -10,7 +10,7 @@ LIBFT_PATH	= ./libft
 
 CC			= cc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 09:24:34 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 16:56:21 by joalmeid         ###   ########.fr       */
+/*   Created: 2023/02/27 14:29:00 by joalmeid          #+#    #+#             */
+/*   Updated: 2023/02/27 15:18:20 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin_special(char **s1, char *s2)
 {
-	size_t	slen;
-	size_t	finallen;
-	char	*sub;
+	size_t	i;
+	size_t	j;
+	char	*join;
 
-	if (!s)
+	if (!*s1 && !s2)
 		return (NULL);
-	slen = ft_strlen(s);
-	finallen = len;
-	if (start >= slen)
-	{
-		sub = malloc(1);
-		sub[0] = '\0';
-		return (sub);
-	}
-	if (len > slen)
-		finallen = slen;
-	sub = ft_calloc((finallen + 1), sizeof(char));
-	if (sub == NULL)
+	i = ft_strlen(*s1);
+	j = ft_strlen(s2);
+	join = ft_calloc((i + j + 1), sizeof(char));
+	if (join == NULL)
 		return (NULL);
-	ft_memcpy(sub, s + start, finallen);
-	sub[finallen] = '\0';
-	return (sub);
+	ft_strlcat(join, *s1, i + 1);
+	ft_strlcat(join, s2, i + j + 1);
+	free(*s1);
+	return (join);
 }

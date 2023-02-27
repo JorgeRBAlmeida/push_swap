@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:34:47 by joalmeid          #+#    #+#             */
-/*   Updated: 2022/06/06 12:21:51 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:23:22 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	alloc_arr(char ***arr, char *t, char c, const char *s)
 {
 	if (t == NULL || s == NULL)
 		return (0);
-	*arr = ft_calloc((c_incidence(t, c) + 1), sizeof(*arr));
+	*arr = ft_calloc((c_incidence(t, c) + 1), sizeof(char *));
 	if (arr == NULL)
 	{
 		free(t);
