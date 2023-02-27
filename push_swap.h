@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/23 20:34:58 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/26 09:04:52 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include "libft/libft.h"
 
-typedef struct s_node {
+typedef struct s_content {
 	int				index;
 	int				data;
-	struct s_node	*next;
-}			t_node;
+}			t_content;
 
 #endif
