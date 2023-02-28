@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 19:26:03 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 19:41:13 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:24:16 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,31 @@ void	rev_rotate_stack(t_list **stack)
 
 	first = *stack;
 	last = ft_lstlast(*stack);
-	while ((*stack)->next == last)
+	while (*stack)
+	{
+		if((*stack)->next == last)
+			(*stack)->next = NULL;
 		*stack = (*stack)->next;
-	(*stack)->next = NULL;
-	ft_lstadd_front(&first, last);
+	}
+	*stack = first;
+	ft_lstadd_front(stack, last);
 }
 
 void	rra(t_list **stack_a)
 {
 	rev_rotate_stack(stack_a);
-	ft_putstr_fd("ra\n", 1);
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_list **stack_b)
 {
 	rev_rotate_stack(stack_b);
-	ft_putstr_fd("rb\n", 1);
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	rev_rotate_stack(stack_a);
 	rev_rotate_stack(stack_b);
-	ft_putstr_fd("rr\n", 1);
+	ft_putstr_fd("rrr\n", 1);
 }

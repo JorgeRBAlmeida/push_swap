@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:40 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 20:43:22 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:39:38 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,8 @@ int	main(int argc, char **argv)
 		else
 		{
 			create_stack_a(&stack_a, new_argv);
-			/* sa(&stack_a);
-			print_lst(stack_a);
-			pb(&stack_b, &stack_a);
-			pb(&stack_b, &stack_a);
-			ss(&stack_b, &stack_a); */
-			rra(&stack_a);
+			ra(&stack_a);
 			print_lst(stack_a, "A");
-			//print_lst(stack_b, "B");
 		}
 		free_new_argv(new_argv);
 	}
@@ -93,7 +87,7 @@ int	is_arg_number(char *str)
 	i = 0;
 	while(str[i])
 	{
-		if (i == 0 && str[i] == '-')
+		if (i == 0 && (str[i] == '-' || str[i] == '+'))
 			i ++;
 		if (!ft_isdigit(str[i]))
 			return (0);

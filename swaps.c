@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:02:03 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 19:08:42 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:08:23 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	swap_next_node(t_list **stack)
 	//segundo elemento aponta para temp
 	(*stack)->next = temp;
 	temp->next = temp2;	
-	//ft_putstr_fd("sa\n", 1);
 }
 
 void	sa(t_list **stack_a)
