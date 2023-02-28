@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/28 11:03:49 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:27:40 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ int		validate_args(char **argv);
 t_list	*ft_node_new_content(t_content content);
 void	print_lst(t_list *node, char *name);
 void	create_stack_a(t_list **node, char **argv);
+t_content	*find_minor_data(t_list **stack);
 char	*ft_strjoin_special(char **s1, char *s2);
 char	**remove_space_argv(char **argv);
 void	free_new_argv(char **new_argv);
+void	free_stacks(t_list **stack_a, t_list **stack_b);
+void	put_index_node(t_list **node, int index);
 void	swap_next_node(t_list **stack);
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
