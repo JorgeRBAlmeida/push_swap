@@ -1,6 +1,8 @@
 NAME		= push_swap
 
-SRCS		= push_swap.c list.c utils.c swaps.c pushes.c rotations.c reverse_rotations.c
+SRCS		= push_swap.c list.c utils.c swaps.c \
+				pushes.c rotations.c reverse_rotations.c \
+				args.c
 
 OBJS		= ${SRCS:.c=.o}
 
