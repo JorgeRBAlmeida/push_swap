@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:02:03 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/28 11:08:23 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:03:14 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	swap_next_node(t_list **stack)
 {
-	t_list	*temp;
-	t_list	*temp2;
+	t_list	*tmp;
+	t_list	*tmp2;
 
 	if ((*stack)->next == NULL)
 		return ;
-	//temp aponta para 1º elemento
-	temp = *stack;
+	//tmp aponta para 1º elemento
+	tmp = *stack;
 	//stack anda para 2º elemento
 	*stack = (*stack)->next;
-	//temp2 aponta 3ºelemento
-	temp2 = (*stack)->next;
-	//segundo elemento aponta para temp
-	(*stack)->next = temp;
-	temp->next = temp2;	
+	//tmp2 aponta 3ºelemento
+	tmp2 = (*stack)->next;
+	//segundo elemento aponta para tmp
+	(*stack)->next = tmp;
+	tmp->next = tmp2;	
 }
 
 void	sa(t_list **stack_a)
