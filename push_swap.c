@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:40 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 17:29:24 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:43:22 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int	main(int argc, char **argv)
 	char	**new_argv;
 	t_list	*stack_a;
 	t_list	*tmp;
-	//t_list	stack_b;
+	t_list	*stack_b;
 
 	stack_a = NULL;
+	stack_b = NULL;
 	tmp = NULL;
 	if (argc > 1)
 	{
@@ -29,7 +30,14 @@ int	main(int argc, char **argv)
 		else
 		{
 			create_stack_a(&stack_a, new_argv);
+			/* sa(&stack_a);
 			print_lst(stack_a);
+			pb(&stack_b, &stack_a);
+			pb(&stack_b, &stack_a);
+			ss(&stack_b, &stack_a); */
+			rra(&stack_a);
+			print_lst(stack_a, "A");
+			//print_lst(stack_b, "B");
 		}
 		free_new_argv(new_argv);
 	}

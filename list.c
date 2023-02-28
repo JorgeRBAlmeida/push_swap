@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:44:10 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 17:07:59 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:40:45 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_list	*ft_node_new_content(t_content content)
 	return (new_node);
 }
 
-void	print_lst(t_list *node)
+void	print_lst(t_list *node, char *name)
 {
 	t_content	*content;
 
@@ -38,12 +38,14 @@ void	print_lst(t_list *node)
 		printf("*node == NULL\n");
 	if ((node)->content == NULL)
 		printf("(*node)->content == NULL\n");
+	printf("\n");
 	while ((node) != NULL)
 	{
 		content = (t_content *)(node)->content;
 		printf("%d\n", content->data);
 		node = (node)->next;
 	}
+	printf("\nstack %s\n", name);
 }
 
 void	create_stack_a(t_list **node, char **argv)
