@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:44:10 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 15:54:59 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 20:30:09 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ void	create_stack_a(t_list **stack_a, char **argv)
 {
 	int		i;
 	int		j;
-	t_list	*new_node;
 
 	i = 0;
-	new_node = NULL;
 	while (argv[i])
 	{
-		new_node = ft_node_new_data(ft_atoi(argv[i]), 0);
-		ft_lstadd_back(stack_a, new_node);
+
+		ft_lstadd_back(stack_a, ft_node_new_data(ft_atoi(argv[i]), 0));
 		i ++;
 	}
 	j = i;

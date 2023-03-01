@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 15:54:07 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 20:45:32 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,9 @@ void	rev_rotate_stack(t_list **stack);
 void	rra(t_list **stack_a);
 void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
+int		is_sorted(t_list **stack_a);
+int		is_inverted(t_list *stack_a);
+void	sort_stack_a(t_list **stack_a, t_list **stack_b);
+void	uninvert_stack(t_list **stack_a, t_list **stack_b);
 
 #endif
