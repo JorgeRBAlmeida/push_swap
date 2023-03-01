@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 09:45:13 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 18:36:31 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:17:22 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 typedef struct s_list
 {
+	int				index;
+	int				data;
 	void			*content;
 	struct s_list	*next;
 }					t_list;
