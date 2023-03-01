@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 19:26:03 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/28 14:24:16 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:14:26 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rev_rotate_stack(t_list **stack)
 	last = ft_lstlast(*stack);
 	while (*stack)
 	{
-		if((*stack)->next == last)
+		if ((*stack)->next == last)
 			(*stack)->next = NULL;
 		*stack = (*stack)->next;
 	}

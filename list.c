@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:44:10 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 15:16:26 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:54:59 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,8 @@ void	put_index_node(t_list **stack, int index)
 
 	first = *stack;
 	minor_data = find_minor_data(stack);
-	//minor_data = 12;
 	while (*stack && (minor_data != (*stack)->data))
-	{
 		*stack = (*stack)->next;
-	}
 	(*stack)->index = index;
 	*stack = first;
 }

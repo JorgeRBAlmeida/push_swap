@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:42:24 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/28 14:42:56 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:11:33 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ char	**remove_space_argv(char **argv)
 	char	**result;
 
 	i = 1;
-	acc = malloc(sizeof(char)*ft_strlen(argv[i]));
+	acc = malloc(sizeof(char) * ft_strlen(argv[i]));
 	while (argv[i])
 	{
 		tmp = ft_strjoin(argv[i], " ");
-		acc =  ft_strjoin_special(&acc, tmp);
+		acc = ft_strjoin_special(&acc, tmp);
 		free(tmp);
 		i ++;
 	}
@@ -52,7 +52,7 @@ int	is_arg_number(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (i == 0 && (str[i] == '-' || str[i] == '+'))
 			i ++;
@@ -67,14 +67,14 @@ int	validate_args(char **argv)
 {
 	int	i;
 	int	j;
-	
-	i= 0;
+
+	i = 0;
 	j = 0;
 	while (argv[i])
 	{
-		if (!is_arg_number(argv[i]) ||
-			((ft_atoi(argv[i]) > INT_MAX) || \
-				( ft_atoi(argv[i]) < INT_MIN)))
+		if (!is_arg_number(argv[i]) \
+			|| ((ft_atoi(argv[i]) > INT_MAX) \
+			|| (ft_atoi(argv[i]) < INT_MIN)))
 			return (0);
 		j = i - 1;
 		while (i > 1 && j >= 1)

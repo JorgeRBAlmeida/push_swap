@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 09:45:13 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 13:17:22 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:20:06 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_list
 
 /* PART_1 */
 
-long		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

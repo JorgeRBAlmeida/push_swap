@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 14:48:05 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:54:07 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft/libft.h"
-
-/* typedef struct s_content {
-	int	index;
-	int	data;
-}		t_content; */
 
 int		is_arg_number(char *str);
 int		validate_args(char **argv);
