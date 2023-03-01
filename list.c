@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:44:10 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/28 18:19:10 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:10:44 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,26 +64,45 @@ void	create_stack_a(t_list **stack_a, char **argv)
 	}
 	j = i;
 	i = 1;
-	/* while (j > 1 && i <= j)
+	printf("linhas 67");
+	while (j > 1 && i <= j)
 	{
+		printf("linhas 70");
 		put_index_node(stack_a, i);
+		printf("linhas 72");
 		i ++;
-	} */
-	
+	}
 }
 
 void	put_index_node(t_list **stack, int index)
 {
 	t_content	*minor_content;
+	t_content	*tmp;
 	t_list		*first;
 
+	printf("linha 80");
 	first = *stack;
-	minor_content = find_minor_data(stack);
-	while (minor_content && (*stack)->content != minor_content)
+	tmp = malloc(sizeof(t_content));
+	minor_content = malloc(sizeof(t_content));
+	//minor_content = find_minor_data(stack);
+	if (minor_content == NULL)
+		return ;
+	minor_content->data = 1;
+	minor_content->index = index;
+	tmp = (*stack)->content;
+	printf("linha 83");
+	while (*stack && minor_content != NULL && tmp->data != minor_content->data)
+	{
+		free(tmp);
+		tmp = malloc(sizeof(t_content));
 		*stack = (*stack)->next;
+		tmp = (*stack)->content;
+		printf("tmp content data %d", tmp->data);
+	}
+	free(tmp);
 	if (minor_content != NULL)
 	{
-		minor_content = (*stack)->content;
+		printf("linha 92");
 		minor_content->index = index;
 		(*stack)->content = minor_content;
 	}
@@ -97,23 +116,29 @@ t_content	*find_minor_data(t_list **stack)
 	t_list		*first;
 
 	first = *stack;
+	minor_content = malloc(sizeof(t_content));
+	content2 = malloc(sizeof(t_content));
 	minor_content = (*stack)->content;
+	// vai passar de ponteiro até encontrar um não setado
+	while (*stack && minor_content->index != 0)
+	{
+		*stack = (*stack)->next;
+		minor_content = (*stack)->content;
+	}
 	while (*stack)
 	{
-		if (minor_content->index != 0 && (*stack)->next != NULL)
-		{
-			*stack = (*stack)->next;
-			minor_content = (*stack)->content;
-		}
 		*stack = (*stack)->next;
 		content2 = (*stack)->content;
 		if (minor_content->data > content2->data && content2->index == 0)
 			minor_content = content2;
-		*stack = (*stack)->next;
 	}
+	free(content2);
 	*stack = first;
-	if (minor_content->index == 0)
+	if (minor_content->index != 0)
+	{
+		free(minor_content);
 		return (NULL);
+	}
 	return (minor_content);
 }
 

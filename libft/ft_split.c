@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:34:47 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/02/27 17:23:22 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/01 01:22:28 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,6 @@ static char	*make_string(char *t, size_t *i, size_t *y)
 
 static int	is_error(char **arr, size_t *j)
 {
-	int	i;
-
-	i = 0;
 	if (arr[*j] == NULL)
 	{
 		while (*j > 0)
