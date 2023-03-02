@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 20:45:32 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/02 02:04:34 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 int		is_sorted(t_list **stack_a);
 int		is_inverted(t_list *stack_a);
 void	sort_stack_a(t_list **stack_a, t_list **stack_b);
-void	uninvert_stack(t_list **stack_a, t_list **stack_b);
+void	uninvert_stack(t_list **stack_a, t_list **stack_b, int stack_size);
+int		find_stack_position(int index, t_list *node);
+void	sort_for_3(t_list **stack_a);
+void	sort_for_4(t_list **stack_a, t_list **stack_b);
+void	sort_for_5(t_list **stack_a, t_list **stack_b);
+
 
 #endif
