@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/02 03:21:47 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:48:27 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,8 @@ void	sort_for_4(t_list **stack_a, t_list **stack_b)
 
 void	sort_for_5(t_list **stack_a, t_list **stack_b)
 {
-	while (find_minor_position( *stack_a) != 1 && find_minor_position(*stack_a) <= 3)
+	while (find_minor_position( *stack_a) != 1 \
+				&& find_minor_position(*stack_a) <= 3)
 		ra(stack_a);
 	while (find_minor_position(*stack_a) >= 4)
 		rra(stack_a);
@@ -148,7 +149,71 @@ void	sort_for_5(t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b);
 }
 
+void	partition(t_list **stack_a, t_list **stack_b, int stack_size, char in)
+{
+	int		half_stack;
+	t_list	*first_major;
 
+	half_stack = stack_size / 2;
+	while(*stack && stack->index < half_stack && in == 'A')
+		pb(stack_b, stack_a);
+	while(*stack && stack->index < half_stack && in == 'B')
+		pa(stack_a, stack_b);
+	if (*stack_a != NULL && in == 'A')
+		first_major = *stack_a;
+	else if (*stack_b != NULL && in == 'B')
+		first_major = *stack_b;
+	else
+		return ;
+	if (in == 'A' && get_most_minor_half(*stack_a, half_stack) == 1)
+	{
+		ra(stack_a);
+		while (*stack_a && *stack_a->index != first_major->index)
+		{
+			if(*stack_a->index < half_stack)
+				pb(stack_b, stack_a);
+			ra(stack_a);
+		}
+	}
+	if (in == 'A' && get_most_minor_half(*stack_a, half_stack) == 2)
+	{
+		ra(stack_a);
+		while (*stack_a && *stack_a->index != first_major->index)
+		{
+			if(*stack_a->index < half_stack)
+				pb(stack_b, stack_a);
+			rra(stack_a);
+		}
+	}
+}
+
+int		get_most_minor_half(t_list *stack, int half_stack)
+{
+	int	first_qnt;
+	int	second_qnt;
+	int	first_half;
+
+	has_minor = 0;
+	first_half = half_stack;
+	while (stack && first_half)
+	{
+		if (stack->index <= half_stack)
+			first_qnt ++;
+		first_half --;
+		stack = stack->next;
+	}
+		while (stack && half_stack)
+	{
+		if (stack->index <= half_stack)
+			second_qnt ++;
+		half_stack --;
+		stack = stack->next;
+	}
+	if (first_qnt > second_qnt)
+		return (1);
+	else
+		return (2);
+}
 
 /* void	sort_for_rest(t_list **stack_a, t_list **stack_b)
 {
