@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/02 12:19:35 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/02 20:23:45 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft/libft.h"
+
+typedef struct s_push
+{
+	int	half;
+	int	minor_qnt;
+	int	size_half;
+}			t_push;
 
 int		is_arg_number(char *str);
 int		validate_args(char **argv);
@@ -55,11 +62,13 @@ int		is_sorted(t_list **stack_a);
 int		is_inverted(t_list *stack_a);
 void	sort_stack_a(t_list **stack_a, t_list **stack_b);
 void	uninvert_stack(t_list **stack_a, t_list **stack_b, int stack_size);
-int		find_stack_position(int index, t_list *node);
-int		find_minor_position(t_list *node);
 void	sort_for_3(t_list **stack_a);
 void	sort_for_4(t_list **stack_a, t_list **stack_b);
 void	sort_for_5(t_list **stack_a, t_list **stack_b);
-int		get_most_minor_half(t_list *stack, int half_stack);
+int		find_stack_position(int index, t_list *node);
+int		find_minor_position(t_list *node);
+int		get_most_minor_half(t_list *stack, int half_stack, int *num_nodes);
+void	push_minor_b(t_list **stack_a, t_list **stack_b, t_push set);
+//void	partition(t_list **stack_a, t_list **stack_b, int stack_size, char in);
 
 #endif
