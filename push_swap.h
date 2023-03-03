@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/02 20:23:45 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/03 01:30:33 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int		find_stack_position(int index, t_list *node);
 int		find_minor_position(t_list *node);
 int		get_most_minor_half(t_list *stack, int half_stack, int *num_nodes);
 void	push_minor_b(t_list **stack_a, t_list **stack_b, t_push set);
-//void	partition(t_list **stack_a, t_list **stack_b, int stack_size, char in);
+void	partition(t_list **stack_a, t_list **stack_b, int stack_size);
 
 #endif

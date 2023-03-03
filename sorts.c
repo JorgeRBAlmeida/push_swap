@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorts.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/02 21:29:44 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/03 01:35:39 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	sort_stack_a(t_list **stack_a, t_list **stack_b)
 		sort_for_4(stack_a, stack_b);
 	else if (stack_size == 5)
 		sort_for_5(stack_a, stack_b);
-	/* else
-		partition(stack_a, stack_b, stack_size, 'A');
-	if (!is_sorted(stack_a))
+	else
+		partition(stack_a, stack_b, stack_size);
+	/* if (!is_sorted(stack_a))
 		sort_stack_a(stack_a, stack_b); */
 }
 
@@ -258,7 +258,7 @@ void	push_minor_b(t_list **stack_a, t_list **stack_b, t_push set)
 	int	minors;
 
 	minors = set.minor_qnt;
-	while (*stack_a != NULL && minors)
+	while (*stack_a != NULL && minors > 0)
 	{
 		if ((*stack_a)->index <= set.size_half)
 		{
@@ -274,11 +274,19 @@ void	push_minor_b(t_list **stack_a, t_list **stack_b, t_push set)
 		else
 			rra(stack_a);
 	}
-	minors = ;
-	push_minor_b(stack_a, stack_b, set);
 }
 
-/* void	sort_for_rest(t_list **stack_a, t_list **stack_b)
+void	partition(t_list **stack_a, t_list **stack_b, int stack_size)
 {
-	
-} */
+	t_push	set;
+
+	set.minor_qnt = 0;
+	set.size_half = stack_size;
+	set.half = get_most_minor_half(*stack_a, set.size_half / 2, &set.minor_qnt);
+	push_minor_b(stack_a, stack_b, set);
+	if (stack_size >= 5)
+	{
+		printf("stack_size=|%d|\n", stack_size);
+		partition(stack_a, stack_b, stack_size / 2);
+	}
+}
