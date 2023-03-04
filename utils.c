@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:29:00 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 19:37:08 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:15:49 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,17 @@ int		is_inverted(t_list *stack_a)
 			return (1);
 	}
 	return (0);
+}
+
+void	print_lst(t_list *lst, char *name)
+{
+	if (lst == NULL)
+		printf("\n(empty)");
+	printf("\n");
+	while (lst)
+	{
+		printf("[%d] %d\n", lst->index, lst->data);
+		lst = lst->next;
+	}
+	printf("\nstack %s\n", name);
 }

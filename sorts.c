@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorts.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/03 01:35:39 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/03 22:09:13 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,126 +153,95 @@ void	sort_for_5(t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b);
 }
 
-/* void	partition(t_list **stack_a, t_list **stack_b, int stack_size, char in)
+t_push	set_push_b_stategy(t_list *stack, int init, int end)
 {
-	int		half_stack;
-	t_list	*first_major;
-	t_list	*first_minor;
-
-	half_stack = stack_size / 2;
-	while(*stack_a && (*stack_a)->index < half_stack && in == 'A')
-		pb(stack_b, stack_a);
-	while(*stack_b && (*stack_b)->index > half_stack && in == 'B')
-		pa(stack_a, stack_b);
-	if (*stack_a != NULL && in == 'A')
-		first_major = *stack_a;
-	else if (*stack_b != NULL && in == 'B')
-		first_minor = *stack_b;
-	else
-		return ;
-	if (in == 'A')
-	{
-		if (get_most_minor_half(*stack_a, half_stack) == 1)
-		{
-			ra(stack_a);
-			while (*stack_a && (*stack_a)->index != first_major->index)
-			{
-				if((*stack_a)->index < half_stack)
-					pb(stack_b, stack_a);
-				ra(stack_a);
-			}
-		}
-		else if (get_most_minor_half(*stack_a, half_stack) == 2)
-		{
-			rra(stack_a);
-			while (*stack_a && (*stack_a)->index != first_major->index)
-			{
-				if((*stack_a)->index < half_stack)
-					pb(stack_b, stack_a);
-				rra(stack_a);
-			}
-		}
-		if (!is_sorted(stack_a) && *stack_b && ft_lstsize(*stack_b) >= 0)
-			partition(stack_a, stack_b, stack_size / 2, 'B');
-		else if (!is_sorted(stack_a) && *stack_b == NULL)
-			partition(stack_a, stack_b, stack_size / 2, 'A');
-		else
-			return;
-	}
-	else if (in == 'B')
-	{
-		if (stack_size == 1)
-		{
-			pa(stack_a, stack_a);
-		}
-		rra(stack_b);
-		if (get_most_minor_half(*stack_b, half_stack) == 1)
-		while (*stack_b && (*stack_b)->index != first_minor->index)
-		{
-			if((*stack_b)->index > half_stack)
-				pb(stack_b, stack_a);
-			rra(stack_b);
-		}
-		else if (get_most_minor_half(*stack_a, half_stack) == 2)
-		{
-			ra(stack_b);
-			while (*stack_b && (*stack_b)->index != first_minor->index)
-			{
-				if((*stack_b)->index > half_stack)
-					pb(stack_b, stack_a);
-				ra(stack_b);
-			}
-		}
-		partition(stack_a, stack_b, stack_size / 2, 'A');
-	}
-} */
-
-int		get_most_minor_half(t_list *stack, int half_stack, int *num_nodes)
-{
+	int	size;
 	int	first_qnt;
 	int	second_qnt;
 	int	first_half;
+	t_push	set;
 
+	size = ft_lstsize(stack);
 	first_qnt = 0;
 	second_qnt = 0;
-	first_half = half_stack;
-	while (stack && first_half)
+	first_half = size / 2 + size % 2;
+	set.init = init;
+	set.end = end;
+	set.top_or_botton = 1;
+	while (stack)
 	{
-		if (stack->index <= half_stack)
+		if (stack->index >= init && stack->index <= end && first_half > 0)
 			first_qnt ++;
+		else if (stack->index >= init && stack->index <= end && first_half <= 0)
+			second_qnt ++;
 		first_half --;
 		stack = stack->next;
 	}
-	second_qnt = half_stack - first_half;
-	if (first_qnt > second_qnt)
-	{
-		*num_nodes = first_qnt;
-		return (1);
-	}
-	*num_nodes = second_qnt;
-	return (2);
+	set.qnt = first_qnt + second_qnt;
+	if (first_qnt < second_qnt)
+		set.top_or_botton = 2;
+	return (set);
 }
 
-void	push_minor_b(t_list **stack_a, t_list **stack_b, t_push set)
+void	push_range_b(t_list **stack_a, t_list **stack_b, t_push set)
 {
-	int	minors;
+	int	ranged;
 
-	minors = set.minor_qnt;
-	while (*stack_a != NULL && minors > 0)
+	ranged = set.qnt;
+	while (*stack_a != NULL && ranged > 0)
 	{
-		if ((*stack_a)->index <= set.size_half)
+		if (*stack_a && (*stack_a)->index >= set.init \
+								&& (*stack_a)->index <= set.end)
 		{
-			if ((*stack_a)->index > (ft_lstlast(*stack_a))->index)
-				rra(stack_a);
-			if ((*stack_a)->index > ((*stack_a)->next)->index)
-				sa(stack_a);
+			optmize_push_b(stack_a, stack_b, set);
 			pb(stack_b, stack_a);
-			minors --;
+			optmize_b(stack_a, stack_b, set);
+			ranged --;
 		}
-		if (set.half == 1)
+		else if (*stack_a && set.top_or_botton == 1)
 			ra(stack_a);
+		else if (*stack_a && set.top_or_botton == 2)
+			rra(stack_a);
+	}
+}
+
+void	optmize_push_b(t_list **stack_a, t_list **stack_b, t_push set)
+{
+	if (*stack_a && (*stack_a)->index > (ft_lstlast(*stack_a))->index \
+		&& ((ft_lstlast(*stack_a))->index >= set.init && (ft_lstlast(*stack_a))->index <= set.end))
+	{
+		if (*stack_b && (*stack_b)->index < (ft_lstlast(*stack_b))->index)
+			rrr(stack_a, stack_b);
 		else
 			rra(stack_a);
+	}
+	else if ((*stack_a) && (*stack_a)->next && (*stack_a)->index > ((*stack_a)->next)->index \
+	&& (((*stack_a)->next)->index >= set.init && ((*stack_a)->next)->index <= set.end))
+	{
+		if ((*stack_b) && (*stack_b)->next && (*stack_b)->index < ((*stack_b)->next)->index)
+			ss(stack_a, stack_b);
+		else
+			sa(stack_a);
+	}
+}
+
+void	optmize_b(t_list **stack_a, t_list **stack_b, t_push set)
+{
+	if (*stack_b && (*stack_b)->index < (ft_lstlast(*stack_b))->index \
+		&& ((ft_lstlast(*stack_b))->index <= set.init && (ft_lstlast(*stack_b))->index <= set.end))
+	{
+		if (*stack_a && (*stack_a)->index > (ft_lstlast(*stack_a))->index)
+			rrr(stack_a, stack_b);
+		else
+			rrb(stack_b);
+	}
+	if ((*stack_b)->next && (*stack_b)->index < ((*stack_b)->next)->index \
+	&& (((*stack_b)->next)->index >= set.init && ((*stack_b)->next)->index <= set.end))
+	{
+		if ((*stack_a)->next && (*stack_a)->index > ((*stack_a)->next)->index)
+			ss(stack_a, stack_b);
+		else
+			sb(stack_b);
 	}
 }
 
@@ -280,13 +249,18 @@ void	partition(t_list **stack_a, t_list **stack_b, int stack_size)
 {
 	t_push	set;
 
-	set.minor_qnt = 0;
-	set.size_half = stack_size;
-	set.half = get_most_minor_half(*stack_a, set.size_half / 2, &set.minor_qnt);
-	push_minor_b(stack_a, stack_b, set);
-	if (stack_size >= 5)
+	set.init = 1;
+	set.end = 14;
+	while (*stack_a && stack_size > 400)
 	{
-		printf("stack_size=|%d|\n", stack_size);
-		partition(stack_a, stack_b, stack_size / 2);
+		set = set_push_b_stategy(*stack_a, set.init, set.end);
+		push_range_b(stack_a, stack_b, set);
+		set.end += 32;
+	}
+	while (*stack_a && stack_size < 400)
+	{
+		set = set_push_b_stategy(*stack_a, set.init, set.end);
+		push_range_b(stack_a, stack_b, set);
+		set.end += 22;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:44:10 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/02 00:06:28 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:14:27 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ t_list	*ft_node_new_data(int data, int index)
 	new_node->index = index;
 	new_node->next = NULL;
 	return (new_node);
-}
-
-void	print_lst(t_list *lst, char *name)
-{
-	if (lst == NULL)
-		printf("*lst == NULL\n");
-	printf("\n");
-	while (lst)
-	{
-		printf("[%d] %d\n", lst->index, lst->data);
-		lst = lst->next;
-	}
-	printf("\nstack %s\n", name);
 }
 
 void	create_stack_a(t_list **stack_a, char **argv)

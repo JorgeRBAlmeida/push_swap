@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:40 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/03 01:16:05 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:13:00 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 			create_stack_a(&stack_a, new_argv);
 			//print_lst(stack_a, "antes A");
 			sort_stack_a(&stack_a, &stack_b);
-			print_lst(stack_a, "A");
-			print_lst(stack_b, "B");
+			/* print_lst(stack_a, "A");
+			print_lst(stack_b, "B"); */
 			/* sort_stack_a(&stack_a, &stack_b);
 			print_lst(stack_a, "A depois da func"); */
 			/* if (sort_stack_a(&stack_a))
