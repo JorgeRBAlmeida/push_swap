@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/03 21:39:22 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:17:38 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ t_push	set_push_b_stategy(t_list *stack, int init, int end);
 void	push_range_b(t_list **stack_a, t_list **stack_b, t_push set);
 void	optmize_push_b(t_list **stack_a, t_list **stack_b,t_push set);
 void	optmize_b(t_list **stack_a, t_list **stack_b,t_push set);
-void	partition(t_list **stack_a, t_list **stack_b, int stack_size);
+void	big_sort(t_list **stack_a, t_list **stack_b, int stack_size);
 
 #endif
