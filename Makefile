@@ -13,6 +13,7 @@ LIBFT_PATH	= ./libft
 CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror -g
+#-fsanitize=address
 
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

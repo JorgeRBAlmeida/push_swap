@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/04 19:17:38 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:12:21 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ int		find_minor_position(t_list *node);
 t_push	set_push_b_stategy(t_list *stack, int init, int end);
 void	push_range_b(t_list **stack_a, t_list **stack_b, t_push set);
 void	optmize_push_b(t_list **stack_a, t_list **stack_b,t_push set);
-void	optmize_b(t_list **stack_a, t_list **stack_b,t_push set);
+int		optmize_b(t_list **stack_a, t_list **stack_b,t_push set, int revert_rb);
 void	big_sort(t_list **stack_a, t_list **stack_b, int stack_size);
+void	push_back_a(t_list **stack_a, t_list **stack_b, \
+										t_push set, int stack_size);
+int		rrb_till_major_b(t_list **stack_b, int major_b, int revert_rb);
+int		not_major_action(t_list **stack_a, t_list **stack_b, int stack_size);
 
 #endif
