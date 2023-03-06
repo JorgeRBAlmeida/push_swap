@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/05 02:44:57 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/06 07:51:35 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,13 @@ int	find_stack_position(int index, t_list *node)
 {
 	int	position;
 
-	position = 1;
+	position = 0;
 	while (node && node->index != index)
 	{
 		node = node->next;
 		position ++;
 	}
+	position ++;
 	return (position);
 }
 
@@ -250,30 +251,24 @@ void	big_sort(t_list **stack_a, t_list **stack_b, int stack_size)
 	t_push	set;
 	int	major_b;
 	int	revert_rb;
+	//int	revert_ra;
 
+	//revert_ra = 0;
 	revert_rb = 0;
 	major_b = stack_size;
 	set.init = 1;
 	set.end = 15;
 	while (*stack_a && stack_size > 400)
 	{
+		set.end += 33;
 		set = set_push_b_stategy(*stack_a, set.init, set.end);
 		push_range_b(stack_a, stack_b, set);
-		set.end += 32;
-		if (ft_lstsize(*stack_a) == 3)
-		{
-			sort_for_3(stack_a);
-		}
 	}
 	while (*stack_a && stack_size < 400)
 	{
+		set.end += 15;
 		set = set_push_b_stategy(*stack_a, set.init, set.end);
 		push_range_b(stack_a, stack_b, set);
-		set.end += 22;
-		if (ft_lstsize(*stack_a) == 3)
-		{
-			sort_for_3(stack_a);
-		}
 	}
 	while (*stack_b && major_b)
 	{
@@ -290,32 +285,67 @@ void	big_sort(t_list **stack_a, t_list **stack_b, int stack_size)
 			{
 				while (*stack_b && (*stack_b)->index != major_b && revert_rb >= 0)
 				{
-					/* if (*stack_a && ft_lstlast(*stack_a)->index == (*stack_a)->index + 1)
+					if (*stack_a && ft_lstlast(*stack_a)->index \
+														== (*stack_a)->index + 1)
 						rrr(stack_a, stack_b);
-					else */
+					else
+						rrb(stack_b);
+					revert_rb --;
+				}
+			}
+			/* if (*stack_a && find_stack_position(major_b, *stack_a))
+			{
+				while (*stack_a && (*stack_a)->index != major_b && revert_ra >= 0)
+				{
+					if (*stack_b && ft_lstlast(*stack_b)->index \
+														>= (*stack_a)->index + 1)
+					{
+						rrr(stack_a, stack_b);
+						revert_rb --;
+					}
+					else
+						rra(stack_a);
+					revert_ra --;
+				}
+			} */
+		}
+		if (*stack_a && major_b != stack_size && ft_lstsize(*stack_a) > 1 && ft_lstlast(*stack_a)->index == major_b)
+		{
+			rra(stack_a);
+			major_b --;
+			set.end = major_b;
+			set.init = 1;
+			optmize_b(stack_a, stack_b, set);
+			if (*stack_b && find_stack_position(major_b, *stack_b) \
+						>= (ft_lstsize(*stack_b) - revert_rb))
+			{
+				while (*stack_b && (*stack_b)->index != major_b && revert_rb >= 0)
+				{
+					if (*stack_a && ft_lstlast(*stack_a)->index \
+														== (*stack_a)->index + 1)
+						rrr(stack_a, stack_b);
+					else
 						rrb(stack_b);
 					revert_rb --;
 				}
 			}
 		}
-		if (*stack_a && ft_lstlast(*stack_a)->index == major_b)
-		{
-			rra(stack_a);
-			major_b --;
-		}
 		else if (*stack_b && (*stack_b)->index != major_b)
 		{
-			if (*stack_b && (*stack_b)->index == major_b - 1)
+			// se ft_lstlast(*stack_a) == stack_size pa ra
+			/* if (*stack_b && (*stack_b)->index == major_b - 1)
 			{
 				sb(stack_b);
 				rb(stack_b);
 				revert_rb ++;
-			}
-			/* else if (*stack_b && (*stack_b)->index == major_b - 2)
+			} */
+			if (ft_lstlast(*stack_a)->index == stack_size || \
+				(*stack_b)->index == ft_lstlast(*stack_a)->index + 1)
 			{
 				pa(stack_a, stack_b);
 				ra(stack_a);
-			} */
+			}
+			// enquanto (*stack_b)->index != major_b e igual a ft_lstlast(*stack_a)->index - 1 pa ra
 			else
 			{
 				rb(stack_b);
