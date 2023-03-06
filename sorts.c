@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/06 20:25:02 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:46:02 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -329,20 +329,40 @@ int	not_major_action(t_list **stack_a, t_list **stack_b, int stack_size)
 void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set, \
 															int stack_size)
 {
-	int	major_b;
+	int	major;
 
-	major_b = stack_size;
-	while (*stack_b && major_b)
+	major = stack_size;
+	while (*stack_b && major)
 	{
-		set.init = major_b;
-		set.end = major_b;
-		if (find_stack_position(major_b, stack_b))
+		set.init = major;
+		set.end = major;
+		if (find_stack_position(major, *stack_b))
 		{
-			set = set_push_b_stategy(*stack_a, set.init, set.end);
-			if (set.top_or_botton == 1)
-				
+			set = set_push_b_stategy(*stack_b, set.init, set.end);
+			while (set.top_or_botton == 1 && (*stack_b)->index != major)
+			{
+				if ((ft_lstlast(*stack_a)->index == stack_size || \
+					(*stack_b)->index == ft_lstlast(*stack_a)->index + 1))
+				{
+					pa(stack_a, stack_b);
+					ra(stack_a);
+				}
+				else
+					rb(stack_b);
+			}
+			while (set.top_or_botton == 2 && (*stack_b)->index != major)
+				rrb(stack_b);
+			pa(stack_a, stack_b);
+			major --;
 		}
-		
+		else if (ft_lstlast(*stack_a)-> index == major)
+		{
+			while (ft_lstlast(*stack_a)->index != stack_size)
+			{
+				rra(stack_a);
+				major --;
+			}
+		}
 	}
 }
 
