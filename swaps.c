@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:02:03 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/01 16:16:18 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:09:39 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	swap_next_node(t_list **stack)
 void	sa(t_list **stack_a)
 {
 	swap_next_node(stack_a);
-	ft_putstr_fd("sa\n", 1);
+	print_action("sa\n");
 }
 
 void	sb(t_list **stack_b)
 {
 	swap_next_node(stack_b);
-	ft_putstr_fd("sb\n", 1);
+	print_action("sb\n");
 }
 
 void	ss(t_list **stack_a, t_list **stack_b)
 {
 	swap_next_node(stack_a);
 	swap_next_node(stack_b);
-	ft_putstr_fd("ss\n", 1);
+	print_action("ss\n");
 }

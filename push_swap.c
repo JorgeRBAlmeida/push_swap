@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:40 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/05 23:43:14 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:56:55 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,7 @@ int	main(int argc, char **argv)
 		else
 		{
 			create_stack_a(&stack_a, new_argv);
-			//print_lst(stack_a, "antes A");
-			sort_stack_a(&stack_a, &stack_b);
-			/* print_lst(stack_a, "A");
-			print_lst(stack_b, "B"); */
-			/* sort_stack_a(&stack_a, &stack_b);
-			print_lst(stack_a, "A depois da func"); */
-			/* if (sort_stack_a(&stack_a))
-				ft_putstr_fd("\ninvertida\n", 1);
-			else
-				ft_putstr_fd("\nnão invertida\n", 1); */
+			push_swap(&stack_a, &stack_b);
 		}
 		free_new_argv(new_argv);
 	}

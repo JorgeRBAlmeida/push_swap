@@ -6,18 +6,16 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/06 20:46:02 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:07:45 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_stack_a(t_list **stack_a, t_list **stack_b)
+void	push_swap(t_list **stack_a, t_list **stack_b)
 {
 	int	stack_size;
-	//t_list	*first;
-
-	//first = *stack_a;
+	
 	stack_size = ft_lstsize(*stack_a);
 	if (is_sorted(stack_a))
 		return ;
@@ -33,8 +31,7 @@ void	sort_stack_a(t_list **stack_a, t_list **stack_b)
 		sort_for_5(stack_a, stack_b);
 	else
 		big_sort(stack_a, stack_b, stack_size);
-	/* if (!is_sorted(stack_a))
-		sort_stack_a(stack_a, stack_b); */
+	print_action("finish");
 }
 
 void	uninvert_stack(t_list **stack_a, t_list **stack_b, int stack_size)
@@ -64,16 +61,20 @@ void	uninvert_stack(t_list **stack_a, t_list **stack_b, int stack_size)
 
 int	find_stack_position(int index, t_list *node)
 {
-	int	position;
+	int		position;
+	t_list	*head;
 
-	position = 0;
-	while (node && node->index != index)
+	head = node;
+	position = 1;
+	while (node->next != NULL)
 	{
+		if (node->index == index)
+			return (position);
 		node = node->next;
 		position ++;
 	}
-	position ++;
-	if (index != ft_lstlast(node)->index)
+	if ((position == ft_lstsize(head)) \
+				&& ((ft_lstlast(head))->index != index))
 		position = 0;
 	return (position);
 }
@@ -109,24 +110,18 @@ void	sort_for_3(t_list **stack_a)
 	first = (*stack_a)->index;
 	second = ((*stack_a)->next)->index;
 	third = (((*stack_a)->next)->next)->index;
-	if (first < second)
+	if (first < second && first < third)
 	{
-		if (first < third && second > third)
-		{
-			sa(stack_a);
-			ra(stack_a);
-		}
-		else
-			rra(stack_a);
+		sa(stack_a);
+		ra(stack_a);
 	}
-	else if (first > second && second < third)
-	{
-		if (first > third)
-			ra(stack_a);
-		else
-			sa(stack_a);
-	}
-	else
+	else if (third < first && first < second)
+		rra(stack_a);
+	else if (second < third && third < first)
+		ra(stack_a);
+	else if (second < first && first < third)
+		sa(stack_a);
+	else if (first < third && third < second)
 	{
 		sa(stack_a);
 		rra(stack_a);
@@ -140,7 +135,13 @@ void	sort_for_4(t_list **stack_a, t_list **stack_b)
 	while (find_minor_position(*stack_a) >= 3)
 		rra(stack_a);
 	pb(stack_b, stack_a);
-	sort_for_3(stack_a);
+	if (!is_sorted(stack_a))
+		sort_for_3(stack_a);
+	if (is_inverted(*stack_a))
+	{
+		ra(stack_a);
+		sa(stack_a);
+	}
 	pa(stack_a, stack_b);
 }
 
@@ -156,7 +157,7 @@ void	sort_for_5(t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b);
 }
 
-t_push	set_push_b_stategy(t_list *stack, int init, int end)
+t_push	set_push_stategy(t_list *stack, int init, int end)
 {
 	int	first_qnt;
 	int	second_qnt;
@@ -196,7 +197,9 @@ void	push_range_b(t_list **stack_a, t_list **stack_b, t_push set)
 		{
 			optmize_push_b(stack_a, stack_b, set);
 			pb(stack_b, stack_a);
-			optmize_b(stack_a, stack_b, set, 0);
+			if ((*stack_b)->index < set.qnt / 2 + set.qnt % 2)
+				rb(stack_b);
+			optmize_b(stack_a, stack_b, set);
 			ranged --;
 		}
 		else if (*stack_a && set.top_or_botton == 1)
@@ -230,7 +233,7 @@ void	optmize_push_b(t_list **stack_a, t_list **stack_b, t_push set)
 	}
 }
 
-int	optmize_b(t_list **stack_a, t_list **stack_b, t_push set, int revert_rb)
+void	optmize_b(t_list **stack_a, t_list **stack_b, t_push set)
 {
 	if (*stack_b && (*stack_b)->index < ft_lstlast((*stack_b))->index \
 							&& (ft_lstlast((*stack_b))->index >= set.init \
@@ -239,92 +242,7 @@ int	optmize_b(t_list **stack_a, t_list **stack_b, t_push set, int revert_rb)
 		if (*stack_a && (*stack_a)->index > ft_lstlast((*stack_a))->index)
 			rrr(stack_a, stack_b);
 	}
-	if (revert_rb)
-		return (-1);
-	else
-		return (0);
-	while (*stack_b && (*stack_b)->next \
-					&& (*stack_b)->index == ((*stack_b)->next)->index + 1 \
-					&& (((*stack_b)->next)->index >= set.init \
-					&& ((*stack_b)->next)->index <= set.end))
-	{
-		if (*stack_a && (*stack_a)->next && (*stack_a)->index \
-												> ((*stack_a)->next)->index)
-			ss(stack_a, stack_b);
-		else
-			sb(stack_b);
-	}
 }
-
-
-
-int	rrb_till_major_b(t_list **stack_b, int major_b, int revert_rb)
-{
-	
-	if (*stack_b && find_stack_position(major_b, *stack_b) \
-						>= (ft_lstsize(*stack_b) - revert_rb))
-	{
-		while (*stack_b && (*stack_b)->index != major_b && revert_rb >= 0)
-		{
-			revert_rb --;
-			rrb(stack_b);
-		}
-		if (revert_rb < 0)
-			revert_rb = 0;
-	}
-	return (revert_rb);
-}
-
-int	not_major_action(t_list **stack_a, t_list **stack_b, int stack_size)
-{
-	int revert_rb;
-
-	revert_rb = 0;
-	if ((ft_lstlast(*stack_a)->index == stack_size || \
-		(*stack_b)->index == ft_lstlast(*stack_a)->index + 1))
-	{
-		pa(stack_a, stack_b);
-		ra(stack_a);
-	}
-	else
-	{
-		rb(stack_b);
-		revert_rb ++;
-	}
-	return (revert_rb);
-}
-
-/* void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set, \
-															int stack_size)
-{
-	int	major_b;
-	int	revert_rb;
-
-	revert_rb = 0;
-	major_b = stack_size;
-	set.init = 1;
-	while (*stack_b && major_b)
-	{
-		if (*stack_b && (*stack_b)->index == major_b)
-		{
-			pa(stack_a, stack_b);
-			major_b --;
-			revert_rb = rrb_till_major_b(stack_b, major_b, revert_rb);
-		}
-		if (*stack_a && major_b < stack_size \
-								&& ft_lstlast(*stack_a)->index == major_b)
-		{
-			while (*stack_a && ft_lstlast(*stack_a)->index != stack_size)
-			{
-				rra(stack_a);
-				major_b --;
-			}
-			revert_rb = rrb_till_major_b(stack_b, major_b, revert_rb);
-		}
-		else if (*stack_b && (*stack_b)->index != major_b)
-			not_major_action(stack_a, stack_b, stack_size);
-	}
-} */
 
 void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set, \
 															int stack_size)
@@ -334,12 +252,12 @@ void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set, \
 	major = stack_size;
 	while (*stack_b && major)
 	{
-		set.init = major;
-		set.end = major;
 		if (find_stack_position(major, *stack_b))
 		{
-			set = set_push_b_stategy(*stack_b, set.init, set.end);
-			while (set.top_or_botton == 1 && (*stack_b)->index != major)
+			set.init = major;
+			set.end = major;
+			set = set_push_stategy(*stack_b, set.init, set.end);
+			if (set.top_or_botton == 1 && (*stack_b)->index != major)
 			{
 				if ((ft_lstlast(*stack_a)->index == stack_size || \
 					(*stack_b)->index == ft_lstlast(*stack_a)->index + 1))
@@ -350,18 +268,18 @@ void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set, \
 				else
 					rb(stack_b);
 			}
-			while (set.top_or_botton == 2 && (*stack_b)->index != major)
+			if (set.top_or_botton == 2 && (*stack_b)->index != major)
 				rrb(stack_b);
-			pa(stack_a, stack_b);
-			major --;
-		}
-		else if (ft_lstlast(*stack_a)-> index == major)
-		{
-			while (ft_lstlast(*stack_a)->index != stack_size)
+			if ((*stack_b)->index == major)
 			{
-				rra(stack_a);
+				pa(stack_a, stack_b);
 				major --;
 			}
+		}
+		while (ft_lstlast(*stack_a)-> index != stack_size && ft_lstlast(*stack_a)-> index == major)
+		{
+			rra(stack_a);
+			major --;
 		}
 	}
 }
@@ -375,13 +293,13 @@ void	big_sort(t_list **stack_a, t_list **stack_b, int stack_size)
 	while (*stack_a && stack_size > 400)
 	{
 		set.end += 33;
-		set = set_push_b_stategy(*stack_a, set.init, set.end);
+		set = set_push_stategy(*stack_a, set.init, set.end);
 		push_range_b(stack_a, stack_b, set);
 	}
 	while (*stack_a && stack_size < 400)
 	{
-		set.end += 15;
-		set = set_push_b_stategy(*stack_a, set.init, set.end);
+		set.end += 14;
+		set = set_push_stategy(*stack_a, set.init, set.end);
 		push_range_b(stack_a, stack_b, set);
 	}
 	push_back_a(stack_a, stack_b, set, stack_size);

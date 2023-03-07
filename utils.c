@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:29:00 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/03 13:15:49 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:36:11 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,29 @@ void	print_lst(t_list *lst, char *name)
 		lst = lst->next;
 	}
 	printf("\nstack %s\n", name);
+}
+
+void	print_action(char *act)
+{
+	static char lst[5];
+	
+	if (lst[0] != '\0' && ft_strncmp(act, "\0", 1))
+	{
+		if ((!ft_strncmp(lst, "sa\n", 3) && !ft_strncmp(act, "sb\n", 3))
+			|| (!ft_strncmp(lst, "sb\n", 3) && !ft_strncmp(act, "sa\n", 3)))
+			ft_strlcpy(lst, "ss\n", 4);
+		else if ((!ft_strncmp(lst, "ra\n", 3) && !ft_strncmp(act, "rb\n", 3))
+			|| (!ft_strncmp(lst, "rb\n", 3) && !ft_strncmp(act, "ra\n", 3)))
+			ft_strlcpy(lst, "rr\n", 4);
+		else if ((!ft_strncmp(lst, "rra\n", 4) && !ft_strncmp(act, "rrb\n", 4))
+			|| (!ft_strncmp(lst, "rrb\n", 4) && !ft_strncmp(act, "rra\n", 4)))
+			ft_strlcpy(lst, "rrr\n", 5);
+		else
+		{
+			ft_putstr_fd(lst, 1);
+			ft_strlcpy(lst, act, ft_strlen(act) + 1);
+		}
+	}
+	else
+		ft_strlcpy(lst, act, ft_strlen(act) + 1);
 }

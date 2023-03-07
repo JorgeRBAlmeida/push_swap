@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 19:26:03 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/06 17:33:48 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:09:16 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ void	rev_rotate_stack(t_list **stack)
 void	rra(t_list **stack_a)
 {
 	rev_rotate_stack(stack_a);
-	ft_putstr_fd("rra\n", 1);
+	print_action("rra\n");
 }
 
 void	rrb(t_list **stack_b)
 {
 	rev_rotate_stack(stack_b);
-	ft_putstr_fd("rrb\n", 1);
+	print_action("rrb\n");
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	rev_rotate_stack(stack_a);
 	rev_rotate_stack(stack_b);
-	ft_putstr_fd("rrr\n", 1);
+	print_action("rrr\n");
 }
