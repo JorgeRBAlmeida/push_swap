@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/07 20:07:45 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:15:51 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,9 +254,7 @@ void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set, \
 	{
 		if (find_stack_position(major, *stack_b))
 		{
-			set.init = major;
-			set.end = major;
-			set = set_push_stategy(*stack_b, set.init, set.end);
+			set = set_push_stategy(*stack_b, major, major);
 			if (set.top_or_botton == 1 && (*stack_b)->index != major)
 			{
 				if ((ft_lstlast(*stack_a)->index == stack_size || \
@@ -276,7 +274,8 @@ void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set, \
 				major --;
 			}
 		}
-		while (ft_lstlast(*stack_a)-> index != stack_size && ft_lstlast(*stack_a)-> index == major)
+		while (ft_lstlast(*stack_a)-> index != stack_size \
+			&& ft_lstlast(*stack_a)-> index == major)
 		{
 			rra(stack_a);
 			major --;
