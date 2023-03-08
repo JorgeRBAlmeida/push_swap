@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:33 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/07 20:07:51 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:21:39 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "libft/libft.h"
 
 typedef struct s_push
 {
 	int	top_or_botton;
 	int	qnt;
+	int	size;
 	int	init;
 	int	end;
 }			t_push;
@@ -36,7 +36,6 @@ typedef struct s_push
 int		is_arg_number(char *str);
 int		validate_args(char **argv);
 t_list	*ft_node_new_data(int data, int index);
-void	print_lst(t_list *node, char *name);
 void	create_stack_a(t_list **node, char **argv);
 int		find_minor_data(t_list **stack);
 char	*ft_strjoin_special(char **s1, char *s2);
@@ -68,15 +67,12 @@ void	sort_for_4(t_list **stack_a, t_list **stack_b);
 void	sort_for_5(t_list **stack_a, t_list **stack_b);
 int		find_stack_position(int index, t_list *node);
 int		find_minor_position(t_list *node);
-t_push	set_push_stategy(t_list *stack, int init, int end);
+t_push	set_push_stategy(t_list *stack, int init, int end, int stack_size);
 void	push_range_b(t_list **stack_a, t_list **stack_b, t_push set);
-void	optmize_push_b(t_list **stack_a, t_list **stack_b,t_push set);
-void	optmize_b(t_list **stack_a, t_list **stack_b,t_push set);
+void	optmize_push_b(t_list **stack_a, t_list **stack_b, t_push set);
+void	optmize_b(t_list **stack_a, t_list **stack_b, t_push set);
+void	push_back_a(t_list **stack_a, t_list **stack_b, t_push set);
 void	big_sort(t_list **stack_a, t_list **stack_b, int stack_size);
-void	push_back_a(t_list **stack_a, t_list **stack_b, \
-										t_push set, int stack_size);
-int		rrb_till_major_b(t_list **stack_b, int major_b, int revert_rb);
-int		not_major_action(t_list **stack_a, t_list **stack_b, int stack_size);
 void	print_action(char *act);
 
 #endif

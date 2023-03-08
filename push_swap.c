@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 00:33:40 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/07 19:56:55 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:14:51 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	{
 		new_argv = remove_space_argv(argv);
 		if (!validate_args(new_argv))
-			ft_putstr_fd("Error\n", 1);
+			ft_putstr_fd("Error\n", 2);
 		else
 		{
 			create_stack_a(&stack_a, new_argv);

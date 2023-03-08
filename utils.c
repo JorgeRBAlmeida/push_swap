@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:29:00 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/07 15:36:11 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:14:13 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strjoin_special(char **s1, char *s2)
 	return (join);
 }
 
-int		is_sorted(t_list **stack_a)
+int	is_sorted(t_list **stack_a)
 {
 	t_list	*first;
 	t_list	*backup;
@@ -58,7 +58,7 @@ int		is_sorted(t_list **stack_a)
 	return (0);
 }
 
-int		is_inverted(t_list *stack_a)
+int	is_inverted(t_list *stack_a)
 {
 	t_list	*first;
 
@@ -76,23 +76,10 @@ int		is_inverted(t_list *stack_a)
 	return (0);
 }
 
-void	print_lst(t_list *lst, char *name)
-{
-	if (lst == NULL)
-		printf("\n(empty)");
-	printf("\n");
-	while (lst)
-	{
-		printf("[%d] %d\n", lst->index, lst->data);
-		lst = lst->next;
-	}
-	printf("\nstack %s\n", name);
-}
-
 void	print_action(char *act)
 {
-	static char lst[5];
-	
+	static char	lst[5];
+
 	if (lst[0] != '\0' && ft_strncmp(act, "\0", 1))
 	{
 		if ((!ft_strncmp(lst, "sa\n", 3) && !ft_strncmp(act, "sb\n", 3))
