@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:01:13 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/08 10:47:13 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:22:02 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,5 @@ void	optmize_push_b(t_list **stack_a, t_list **stack_b, t_push set)
 			rrr(stack_a, stack_b);
 		else
 			rra(stack_a);
-	}
-	while ((*stack_a) && (*stack_a)->next \
-						&& (*stack_a)->index > ((*stack_a)->next)->index \
-						&& (((*stack_a)->next)->index >= set.init \
-						&& ((*stack_a)->next)->index <= set.end))
-	{
-		if ((*stack_b) && (*stack_b)->next \
-						&& (*stack_b)->index < ((*stack_b)->next)->index)
-			ss(stack_a, stack_b);
-		else
-			sa(stack_a);
 	}
 }
