@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:10:46 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/08 19:21:52 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/09 12:18:15 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	push_range_b(t_list **stack_a, t_list **stack_b, t_push set)
 		{
 			optmize_push_b(stack_a, stack_b, set);
 			pb(stack_b, stack_a);
-			if ((*stack_b)->index <= set.init + 16 && set.size > 400)
+			if ((*stack_b)->index <= set.init + 16 && set.size >= 400)
 				rb(stack_b);
 			else if ((*stack_b)->index < set.qnt / 2 + set.qnt % 2 \
 													&& set.size < 400)
