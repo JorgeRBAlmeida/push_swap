@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:44:10 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/03 13:14:27 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/09 12:02:14 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_list	*ft_node_new_data(int data, int index)
 
 void	create_stack_a(t_list **stack_a, char **argv)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (argv[i])
