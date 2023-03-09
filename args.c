@@ -6,24 +6,24 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:42:24 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/02 19:30:31 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/09 12:09:19 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_new_argv(char **new_argv)
+void	free_trimmed_argv(char **trimmed_argv)
 {
 	int	i;
 
 	i = 0;
-	while (new_argv[i])
+	while (trimmed_argv[i])
 	{
-		free(new_argv[i]);
+		free(trimmed_argv[i]);
 		i ++;
 	}
-	free(new_argv);
-	new_argv = NULL;
+	free(trimmed_argv);
+	trimmed_argv = NULL;
 }
 
 char	**remove_space_argv(char **argv)
