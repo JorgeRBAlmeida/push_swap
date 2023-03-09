@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:11:05 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/08 16:08:39 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:52:53 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	put_major_at_top_b(t_list **stack_a, t_list **stack_b, \
 				&& (*stack_b)->next->index == major)
 			sb(stack_b);
 		else if ((ft_lstlast(*stack_a)->index == set.size || \
-			(*stack_b)->index == ft_lstlast(*stack_a)->index + 1))
+			(*stack_b)->index >= ft_lstlast(*stack_a)->index))
 		{
 			pa(stack_a, stack_b);
 			ra(stack_a);
