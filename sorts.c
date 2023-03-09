@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:23:48 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/08 14:55:10 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/09 12:11:30 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	big_sort(t_list **stack_a, t_list **stack_b, int stack_size)
 
 	set.init = stack_size / 2 + stack_size % 2 - 17;
 	set.end = stack_size / 2 + stack_size % 2 + 17;
-	while (*stack_a && stack_size > 400)
+	while (*stack_a && stack_size >= 400)
 	{
 		set = set_push_stategy(*stack_a, set.init, set.end, stack_size);
 		push_range_b(stack_a, stack_b, set);
