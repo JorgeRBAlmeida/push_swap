@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:10:46 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/09 12:18:15 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:42:03 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	push_range_b(t_list **stack_a, t_list **stack_b, t_push set)
 			optmize_b(stack_a, stack_b, set);
 			ranged --;
 		}
-		else if (*stack_a && set.top_or_botton == 1)
-			ra(stack_a);
-		else if (*stack_a && set.top_or_botton == 2)
+		else
 			ra(stack_a);
 	}
 }

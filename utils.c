@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:29:00 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/08 15:14:13 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:55:29 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ char	*ft_strjoin_special(char **s1, char *s2)
 
 int	is_sorted(t_list **stack_a)
 {
-	t_list	*first;
+	t_list	*head;
 	t_list	*backup;
 
-	first = *stack_a;
+	head = *stack_a;
 	backup = *stack_a;
 	*stack_a = (*stack_a)->next;
 	if (*stack_a == NULL)
@@ -44,9 +44,9 @@ int	is_sorted(t_list **stack_a)
 		*stack_a = backup;
 		return (1);
 	}
-	while (*stack_a && first->index < (*stack_a)->index)
+	while (*stack_a && head->index < (*stack_a)->index)
 	{
-		first = *stack_a;
+		head = *stack_a;
 		*stack_a = (*stack_a)->next;
 		if (*stack_a == NULL)
 		{
