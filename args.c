@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:42:24 by joalmeid          #+#    #+#             */
-/*   Updated: 2023/03/09 12:09:19 by joalmeid         ###   ########.fr       */
+/*   Updated: 2023/03/10 08:25:00 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	validate_args(char **argv)
 			|| (ft_atoi(argv[i]) < INT_MIN)))
 			return (0);
 		j = i - 1;
-		while (i > 1 && j >= 0)
+		while (i >= 1 && j >= 0)
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (0);
